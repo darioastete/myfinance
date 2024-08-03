@@ -1,0 +1,27 @@
+---
+interface Props {
+    title: string;
+    color?: string;
+    name: string;
+    addClass?: string;
+    disabled?: boolean;
+}
+
+const { title, color, addClass, disabled, name } = Astro.props;
+
+const getColor = ()=>{
+    switch(color){
+        case 'primary':
+            return 'bg-blue-500 text-white';
+        case 'secondary':
+            return 'bg-gray-500 text-white';
+        default:
+            return 'bg-gray-500 text-white';
+    }
+}
+---
+
+<button class=`${getColor()} py-3 ${addClass} disabled:opacity-25` disabled={disabled ?? false}  id={name} >
+    {title} {disabled && '...'}
+  <slot />
+</button>
