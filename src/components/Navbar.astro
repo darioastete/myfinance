@@ -6,11 +6,16 @@ interface Props {
 }
 const {goal, missing} = Astro.props;
 
+const personalGoal = () => {
+    return goal/3;
+}
+
 ---
 
 <nav>
     <div class="text-center bg-gray-800 text-white p-2 flex justify-between">
         <span>Daily: <strong>{formatMoney(goal)}</strong></span>
+        <span>Personal: <strong>{formatMoney(personalGoal())}</strong></span>
         <!-- <span>Missing : <strong>{formatMoney(missing) }</strong></span> -->
     </div>
 </nav>
