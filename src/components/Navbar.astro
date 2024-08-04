@@ -1,0 +1,16 @@
+---
+import { formatMoney } from "../common/utils/formatMoney.util";
+interface Props {
+    goal: number;
+    missing: number;
+}
+const {goal, missing} = Astro.props;
+
+---
+
+<nav>
+    <div class="text-center bg-gray-800 text-white p-2 flex justify-between">
+        <span>Daily: <strong>{formatMoney(goal)}</strong></span>
+        <!-- <span>Missing : <strong>{formatMoney(missing) }</strong></span> -->
+    </div>
+</nav>
