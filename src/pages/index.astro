@@ -51,7 +51,6 @@ import Layout from '../layouts/Layout.astro';
 			// Ejemplo de envío de datos a un servidor
 
 			const button = document.getElementById('btn-save') as HTMLButtonElement;
-			console.log(button);
 			button.disabled = true;
 			try {
 				const response = await fetch(`${URL()}`, {
