@@ -23,3 +23,26 @@ const getType = ()=>{
     <label for={name} class="text-sm">{`${label} :`}</label>
     <input type={getType()} id={name} name={name} class="py-2 px-2 border shadow-md"/>
 </div>
+
+<script>
+    let lastValidValue = '';
+    const validateInput = (event: Event) =>{
+        const regex = /^[a-zA-Z0-9\s]*$/;
+        const input = event.target as HTMLInputElement;
+        const trimmedValue = input.value.trim();
+
+        if(!regex.test(trimmedValue)){
+            input.value = lastValidValue;
+            return;
+        }
+
+        lastValidValue = trimmedValue;
+    }
+
+
+    const inputs = document.querySelectorAll('input[type="text"]');
+
+    inputs.forEach(input => {
+        input.addEventListener('input',validateInput);
+    });
+</script>
