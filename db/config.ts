@@ -6,7 +6,7 @@ const Users = {
     username: column.text(),
     password: column.text(),
     email: column.text(),
-    createdAt: column.date(),
+    createdAt: column.number(),
   },
 };
 
@@ -16,7 +16,7 @@ const Incomes = {
     user_id: column.text(),
     amount: column.number(),
     description: column.text(),
-    createdAt: column.date(),
+    createdAt: column.number(),
   },
 };
 
@@ -26,7 +26,7 @@ const Expenses = {
     user_id: column.text(),
     amount: column.number(),
     description: column.text(),
-    createdAt: column.date(),
+    createdAt: column.number(),
   },
 };
 
@@ -38,7 +38,7 @@ const Goals = {
     start_date: column.text(),
     end_date: column.text(),
     exceeded_amount: column.number(),
-    createdAt: column.date(),
+    createdAt: column.number(),
   },
 };
 

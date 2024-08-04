@@ -2,6 +2,8 @@ import type { APIRoute } from "astro";
 import { object, string, safeParse } from "valibot";
 import { db, Expenses, NOW } from "astro:db";
 import { generateId } from "../../common/utils/generateId.util";
+import createdAtTimeZone from "../../common/utils/createdAt.util";
+
 // import { getSession } from "auth-astro/server";
 
 const ExpenseSchema = object({
@@ -23,7 +25,7 @@ export const POST: APIRoute = async ({ request }): Promise<Response> => {
     if (!success) return new Response("Invalid input", { status: 400 });
 
     const { user_id, amount, description } = output;
-    const createdAt = NOW;
+    const createdAt = createdAtTimeZone();
     const id = generateId();
 
     const expense = {
