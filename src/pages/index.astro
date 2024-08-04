@@ -60,13 +60,14 @@ import Layout from '../layouts/Layout.astro';
 					},
 					body: JSON.stringify(data)
 				});
-				const result = await response.json();
+				await response.json();
 				button.disabled = false;
-				console.log(result);
+				form.reset();
+				alert('Success!');
 			} catch (error) {
 				button.disabled = false;
-				alert('Error al enviar los datos');
 				console.error('Error al enviar los datos:', error);
+				alert('Ups, something went wrong');
 			}
 		});
 	}
