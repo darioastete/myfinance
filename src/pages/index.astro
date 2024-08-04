@@ -37,6 +37,11 @@ import Layout from '../layouts/Layout.astro';
 				return;
 			}
 
+			if (Number(data.amount) <= 0) {
+				alert('El monto debe ser mayor a 0');
+				return;
+			}
+
 			const URL = ()=>{
 				switch(formData.get('typeRegister')){
 					case '1':
