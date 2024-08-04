@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import { object, string, safeParse } from "valibot";
-import { db, Incomes } from "astro:db";
+import { db, eq, Incomes } from "astro:db";
 import { generateId } from "../../common/utils/generateId.util";
 import createdAtTimeZone from "../../common/utils/createdAt.util";
 // import { getSession } from "auth-astro/server";
@@ -55,6 +55,24 @@ export const GET: APIRoute = async (): Promise<Response> => {
   try {
     const users = await db.select().from(Incomes);
     return new Response(JSON.stringify(users), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (error) {
+    console.log(error);
+    return new Response("Internal Server Error", { status: 500 });
+  }
+};
+
+export const DELETE: APIRoute = async ({ request }): Promise<Response> => {
+  try {
+    const { id } = await request.json();
+    const result = await db.delete(Incomes).where(eq(Incomes.id, id));
+
+    if (result.rowsAffected !== 1)
+      return new Response("Failed to delete", { status: 400 });
+
+    return new Response(JSON.stringify(result), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
