@@ -6,12 +6,17 @@ export const compareDayAndMonth = (unix: number): boolean => {
 
   //   console.log("UNIXXXX====", currentDateUNIX);
 
-  const date = moment.unix(unix);
-  const currentDate = moment.unix(currentDateUNIX);
+  const date = momentTZ(moment.unix(unix), "Australia/Sydney");
+  const currentDate = momentTZ(
+    moment.unix(currentDateUNIX),
+    "Australia/Sydney"
+  );
 
   console.log(
     "ESTO ES UNA PRUEBA ==>",
-    moment.unix(1722434400).format("DD-MM-YYYY HH:mm:ss")
+    momentTZ(moment.unix(1722434400), "Australia/Sydney").format(
+      "DD-MM-YYYY HH:mm:ss"
+    )
   );
 
   //   console.log("DATE ===>", date);

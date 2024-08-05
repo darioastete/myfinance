@@ -13,7 +13,10 @@ export const calcDayli = async (): Promise<number> => {
 
     const findGoal = goals.find(
       (goal) =>
-        moment.unix(Number(goal.start_date)).format("MM") === getCurrentMonth
+        momentTZ(
+          moment.unix(Number(goal.start_date)),
+          "Australia/Sydney"
+        ).format("MM") === getCurrentMonth
     );
 
     const totalDayli = findGoal?.amount ? findGoal.amount / 20 : 0;
