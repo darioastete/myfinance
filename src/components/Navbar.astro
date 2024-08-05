@@ -13,9 +13,15 @@ const personalGoal = () => {
 ---
 
 <nav>
-    <div class="text-center bg-gray-800 text-white p-2 flex justify-between">
-        <span>Daily: <strong>{formatMoney(goal)}</strong></span>
-        <span>Personal: <strong>{formatMoney(personalGoal())}</strong></span>
-        <!-- <span>Missing : <strong>{formatMoney(missing) }</strong></span> -->
+    <div class="text-center bg-gray-800 text-white p-2 flex justify-between items-center">
+        <div class="flex flex-col text-xs text-left">
+            <span>Daily: <strong>{formatMoney(goal)}</strong></span>
+            <!-- <span>Personal: <strong>{formatMoney(personalGoal())}</strong></span> -->
+            <span>Income: <strong class="text-green-600">{formatMoney(goal-missing)}</strong> </span>
+        </div>
+        <div class="flex flex-col">
+            <span>Missing: </span>
+            <span class="text-yellow-200"><strong>{formatMoney(missing) }</strong></span>
+        </div>
     </div>
 </nav>

@@ -1,11 +1,22 @@
 import { db, Goals } from "astro:db";
+import moment from "moment";
 
-const goal = await db.select().from(Goals);
-console.log(goal);
+export const calcDayli = async (): Promise<number> => {
+  try {
+    const getCurrentMonth = moment().format("MM");
 
-export const calcDayli = () => {
-  if (goal.length <= 0) return 0;
+    const goals = await db.select().from(Goals);
+    if (goals.length <= 0) return 0;
 
-  const result = goal[0].amount / 20;
-  return result;
+    const findGoal = goals.find(
+      (goal) =>
+        moment.unix(Number(goal.start_date)).format("MM") === getCurrentMonth
+    );
+
+    const totalDayli = findGoal?.amount ? findGoal.amount / 20 : 0;
+
+    return totalDayli;
+  } catch (error) {
+    throw new Error("Error in calcDayli");
+  }
 };

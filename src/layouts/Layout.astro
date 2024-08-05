@@ -3,14 +3,15 @@ interface Props {
 	title: string;
 }
 
-import { db, Goals } from "astro:db";
 import Navbar from "../components/Navbar.astro";
 import { calcDayli } from "../common/utils/calcDayli.util";
+import { calcMissedDay } from "../common/utils/calcMissed.util";
 
 const { title } = Astro.props;
 
-const goal = await db.select().from(Goals);
-console.log(goal);
+const calcMissDay = await calcMissedDay();
+const calcDay = await calcDayli();
+
 ---
 
 <!doctype html>
@@ -24,7 +25,7 @@ console.log(goal);
 		<title>{title}</title>
 	</head>
 	<body>
-		<Navbar goal={calcDayli()} missing={0} />
+		<Navbar goal={calcDay} missing={calcMissDay} />
 		<main class="w-full py-3 px-3 min-h-screen flex flex-col">
 			<slot />
 		</main>
