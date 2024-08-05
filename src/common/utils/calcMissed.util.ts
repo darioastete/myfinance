@@ -1,10 +1,13 @@
 import { db, Expenses, Goals, Incomes } from "astro:db";
 import moment from "moment";
 import { compareDayAndMonth } from "../utils/getDates.util";
+import momentTZ from "moment-timezone";
 
 export const calcMissedDay = async (): Promise<number> => {
   try {
-    const getCurrentMonth = moment().format("MM");
+    const getCurrentMonth = momentTZ
+      .tz(new Date(), "Australia/Sydney")
+      .format("MM");
     const goals = await db.select().from(Goals);
 
     // const expenses = await db.select().from(Expenses);

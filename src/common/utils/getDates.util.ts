@@ -9,6 +9,11 @@ export const compareDayAndMonth = (unix: number): boolean => {
   const date = moment.unix(unix);
   const currentDate = moment.unix(currentDateUNIX);
 
+  console.log(
+    "ESTO ES UNA PRUEBA ==>",
+    moment.unix(1722434400).format("DD-MM-YYYY HH:mm:ss")
+  );
+
   //   console.log("DATE ===>", date);
   //   console.log("CURRENT DATE ===>", currentDate);
   //   console.log(currentDate.isSame(date, "day"));
