@@ -1,9 +1,12 @@
 import { db, Goals } from "astro:db";
 import moment from "moment";
+import momentTZ from "moment-timezone";
 
 export const calcDayli = async (): Promise<number> => {
   try {
-    const getCurrentMonth = moment().format("MM");
+    const getCurrentMonth = momentTZ
+      .tz(new Date(), "Australia/Sydney")
+      .format("MM");
 
     const goals = await db.select().from(Goals);
     if (goals.length <= 0) return 0;
