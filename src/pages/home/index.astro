@@ -26,7 +26,7 @@ import Layout from '../../layouts/Layout.astro';
     const ctxMonth = document.getElementById('forMonth') as HTMLCanvasElement;
 
     async function initializeCharts() {
-        const mountForDays =  await getForWeek(3,8,2024);
+        const mountForDays =  await getForWeek(2,8,2024);
         const mountForMonth =  await getForMonths(2024);
         new Chart(ctx, {
             type: 'bar',
