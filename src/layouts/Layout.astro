@@ -1,15 +1,16 @@
 ---
 interface Props {
 	title: string;
+	isBalance: boolean;
 }
 
 import Navbar from "../components/Navbar.astro";
 import { calcDayli } from "../common/utils/calcDayli.util";
 import { calcMissedDay } from "../common/utils/calcMissed.util";
 
-const { title } = Astro.props;
+const { title, isBalance } = Astro.props;
 
-const calcMissDay = await calcMissedDay();
+const calcMisseDay = await calcMissedDay();
 const calcDay = await calcDayli();
 
 ---
@@ -25,7 +26,9 @@ const calcDay = await calcDayli();
 		<title>{title}</title>
 	</head>
 	<body>
-		<Navbar goal={calcDay} missing={calcMissDay} />
+		{isBalance && 
+			<Navbar missing={calcMisseDay} goal={calcDay} />
+		 }
 		<main class="w-full py-3 px-3 min-h-screen flex flex-col">
 			<slot />
 		</main>

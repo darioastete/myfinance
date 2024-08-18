@@ -1,0 +1,90 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+---
+<Layout title="Dashboard" isBalance={false}>
+    <div class="flex justify-center">
+        <h3 class="text-2xl font-semibold">Balance</h3>
+    </div>
+    <div class="flex gap-5 p-10 overflow-hidden items-center justify-center">
+        <div class="w-full">
+            <canvas id="forWeek" class="w-full" />
+        </div>
+        <div class="w-full">
+            <canvas id="forMonth" class="w-full" />
+        </div>
+    </div>
+</Layout>
+
+<script>
+    import Chart from "chart.js/auto";
+    import { getForWeek } from "@common/utils/dashboard/getForWeek.util";
+    import { DaysArray, MonthsArray } from "@const/index";
+    import { getForMonths } from "@common/utils/dashboard/getForMonths.util";
+    
+    const ctx = document.getElementById('forWeek') as HTMLCanvasElement;
+    const ctxMonth = document.getElementById('forMonth') as HTMLCanvasElement;
+
+    async function initializeCharts() {
+        const mountForDays =  await getForWeek(2,8,2024);
+        const mountForMonth =  await getForMonths(2024);
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: DaysArray,
+                datasets: [
+                {
+                    label: 'Incomes',
+                    data: mountForDays.incomes,
+                    borderWidth: 2,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                },
+                {
+                    label: 'Expenses',
+                    data: mountForDays.expenses, // Primer conjunto de datos
+                    borderWidth: 2,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgb(255, 99, 132)',
+                },
+            ]
+            },
+            options: {
+                layout: {
+            padding: 20
+        }
+            }
+        });
+    
+        new Chart(ctxMonth, {
+            type: 'bar',
+            data: {
+                labels: MonthsArray,
+                datasets: [
+                {
+                    label: 'Incomes',
+                    data: mountForMonth.incomes,
+                    borderWidth: 2,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                },
+                {
+                    label: 'Expenses',
+                    data: mountForMonth.expenses, // Primer conjunto de datos
+                    borderWidth: 2,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgb(255, 99, 132)',
+                },
+                ]
+            },
+            options: {
+                layout: {
+            padding: 20
+        }
+            }
+        });
+    }
+
+    initializeCharts();
+
+</script>
