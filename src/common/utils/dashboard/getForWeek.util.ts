@@ -41,6 +41,7 @@ const transactionForWeek = (
   return transactions.filter((income: Income) => {
     const date = getUnixDateDateTime(income.createdAt);
     const weekOfMonth = getWeekOfMonth(date);
+    // console.log(month, date.month());
     return (
       weekOfMonth === week && date.month() + 1 === month && date.year() === year
     );
