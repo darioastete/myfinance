@@ -49,7 +49,7 @@ const transactionForWeek = (
     const weekOfMonth = getWeekOfMonth(date);
     // console.log(month, date.month());
     return (
-      weekOfMonth === week && date.month() + 1 === month && date.year() === year
+      weekOfMonth === week && date.month() === month && date.year() === year
     );
   });
 };

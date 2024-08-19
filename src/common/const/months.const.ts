@@ -27,3 +27,18 @@ export const MonthsArray = [
   "November",
   "December",
 ];
+
+export const MonthsArrayShort = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];

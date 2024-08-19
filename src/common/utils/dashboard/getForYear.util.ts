@@ -2,11 +2,7 @@ import type { BaseTransaction } from "@common/types";
 import { MonthsArray } from "@common/const";
 import { getUnixDateDateTime } from "@utils/getUnixDateDateTime.util";
 
-export const getForMonths = async (year: number) => {
-  // const BASE_URL = import.meta.env.DEV
-  //   ? "http://localhost:4321/api"
-  //   : "https://myfinance-five.vercel.app/api";
-
+export const getForYear = async (year: number) => {
   // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
   const incomes = await fetch(`/api/incomes`).then((res) => res.json());
 
