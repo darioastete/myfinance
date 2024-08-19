@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import Chart from "chart.js/auto";
 import { onMounted, ref, toRefs, watch, shallowRef } from 'vue';
+import { changeOpacity, hexToRgba } from "@/common/utils/dashboard/changeColorOpacity.util";
+
 
 const props = defineProps<{
     id: string,
@@ -10,13 +12,12 @@ const props = defineProps<{
         expenses: number[]
     },
     labels: string[],
-    borderColor: string,
-    backgroundColor: string
+    primaryColor: string,
+    secondColor: string,
 }>();
 
-const { data, labels, borderColor, backgroundColor, id } = toRefs(props);
+const { data, labels, primaryColor, secondColor, id } = toRefs(props);
 const chartInstance = ref();
-// const ctx = ref<HTMLCanvasElement>({} as HTMLCanvasElement);
 
 const createChart = () => {
     const ctx = document.getElementById(id.value) as HTMLCanvasElement;
@@ -34,15 +35,15 @@ const createChart = () => {
                 label: 'Incomes',
                 data: data.value.incomes,
                 borderWidth: 2,
-                backgroundColor: backgroundColor.value,
-                borderColor: borderColor.value,
+                backgroundColor: hexToRgba(primaryColor.value, 0.4),
+                borderColor: primaryColor.value,
             },
             {
                 label: 'Expenses',
                 data: data.value.expenses,
                 borderWidth: 2,
-                backgroundColor: backgroundColor.value,
-                borderColor: borderColor.value,
+                backgroundColor: hexToRgba(secondColor.value, 0.4),
+                borderColor: secondColor.value,
             },
         ]
         },

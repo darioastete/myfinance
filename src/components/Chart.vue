@@ -5,6 +5,7 @@ import { getForYear } from "@/common/utils/dashboard/getForYear.util";
 import { getForMonth } from "@/common/utils/dashboard/getForMonth.util";
 import CardChart from "@components/CardChart.vue";
 import { onMounted, ref } from "vue";
+import { changeOpacity, hexToRgba } from "@/common/utils/dashboard/changeColorOpacity.util";
 interface ChartData {
     incomes: number[],
     expenses: number[],
@@ -45,8 +46,8 @@ onMounted(() => {
 <template>
     <button @click="getDaysForWeek(2,7,2024)">Cambiar valores</button>
     <div class="flex w-full justify-between">
-        <CardChart id="days" :data="mountForDays" :labels="labelDays" borderColor="#4c4c4c" backgroundColor="#4c4c4c" title="Week" />
-        <CardChart id="months" :data="mountForMonth" :labels="labelMonths" borderColor="#4c4c4c" backgroundColor="#4c4c4c" title="Month" />
-        <CardChart id="years" :data="mountForYear" :labels="labelYears" borderColor="#4c4c4c" backgroundColor="#4c4c4c" title="Year" />
+        <CardChart id="days" :data="mountForDays" :labels="labelDays" primaryColor="#4BC0C0" secondColor="#FF6384" title="Week" />
+        <CardChart id="months" :data="mountForMonth" :labels="labelMonths" primaryColor="#4BC0C0" secondColor="#FF6384" title="Month" />
+        <CardChart id="years" :data="mountForYear" :labels="labelYears" primaryColor="#4BC0C0" secondColor="#FF6384" title="Year" />
     </div>
 </template>
