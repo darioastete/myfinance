@@ -9,7 +9,6 @@ export const getForMonth = async (month: number, year: number) => {
   // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
   const expenses = await fetch(`/api/expenses`).then((res) => res.json());
   const weeks = getWeeksForMonth(month, year);
-  console.log(weeks);
 
   // return weeks;
 
@@ -23,8 +22,6 @@ export const getForMonth = async (month: number, year: number) => {
     expensesForMonth,
     weeks
   );
-
-  console.log(totalIncomesForMonth);
 
   return {
     incomes: totalIncomesForMonth,
@@ -55,10 +52,8 @@ const totalTransactionForWeek = (
   weeks: Week[]
 ): number[] => {
   return weeks.map((week) => {
-    console.log("esta cargando", transactions);
     const transForWeek = transactions.filter((trans: BaseTransaction) => {
       const date = getUnixDateDateTime(trans.createdAt);
-      console.log("sssss", date.week(), week.weekYear);
       return date.week() === week.weekYear;
     });
 

@@ -5,21 +5,21 @@ import type { BaseTransaction, Income } from "@common/types";
 // import { db, Incomes } from "astro:db";
 
 export const getForWeek = async (week: number, month: number, year: number) => {
-  // const BASE_URL_DEV = "http://localhost:4321/api";
-  // const BASE_URL_PROD = "https://myfinance-five.vercel.app/api";
-  // const incomes = await fetch(`${BASE_URL_DEV}/incomes`).then((res) =>
-  //   res.json()
-  // );
+  const BASE_URL_DEV = "http://localhost:4321/api";
+  const BASE_URL_PROD = "https://myfinance-five.vercel.app/api";
+  const incomes = await fetch(`${BASE_URL_DEV}/incomes`).then((res) =>
+    res.json()
+  );
 
-  // const expenses = await fetch(`${BASE_URL_DEV}/expenses`).then((res) =>
-  //   res.json()
-  // );
-
-  // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
-  const incomes = await fetch(`/api/incomes`).then((res) => res.json());
+  const expenses = await fetch(`${BASE_URL_DEV}/expenses`).then((res) =>
+    res.json()
+  );
 
   // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
-  const expenses = await fetch(`/api/expenses`).then((res) => res.json());
+  // const incomes = await fetch(`/api/incomes`).then((res) => res.json());
+
+  // // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
+  // const expenses = await fetch(`/api/expenses`).then((res) => res.json());
 
   // if (incomes.length <= 0) throw new Error("No incomes found");
 

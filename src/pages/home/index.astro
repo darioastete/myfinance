@@ -1,28 +1,40 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
+import Modal from "@components/Modal.vue";
+import Chart from "@components/Chart.vue";
+
+
 ---
 <Layout title="Dashboard" isBalance={false}>
+    <!-- <div class="w-2 " >
+        <button id="btnOpenModal" onclick="{`window.${id}.showModal()`}" >Abrir modal</button>
+        <Modal open={false} client:visible id="modalA" />
+    </div> -->
     <div class="flex justify-center">
         <h3 class="text-2xl font-semibold">Balance</h3>
     </div>
     <div class="flex overflow-hidden items-center justify-center">
         <div class="w-full">
+            <Chart  client:visible />
+        </div>
+        <!-- <div class="w-full">
             <canvas id="forWeek" class="w-full" />
+            <CardChart />
         </div>
         <div class="w-full">
             <canvas id="forMonth" class="w-full" />
         </div>
         <div class="w-full">
             <canvas id="forYear" class="w-full" />
-        </div>
+        </div> -->
     </div>
 </Layout>
 
-<script>
+<!-- <script>
     import Chart from "chart.js/auto";
-    import { getForWeek } from "@common/utils/dashboard/getForWeek.util";
     import { DaysArray, MonthsArrayShort } from "@const/index";
+    import { getForWeek } from "@common/utils/dashboard/getForWeek.util";
     import { getForYear } from "@/common/utils/dashboard/getForYear.util";
     import { getForMonth } from "@/common/utils/dashboard/getForMonth.util";
     
@@ -128,4 +140,4 @@ import Layout from '../../layouts/Layout.astro';
 
     initializeCharts();
 
-</script>
+</script> -->
