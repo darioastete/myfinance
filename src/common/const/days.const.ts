@@ -17,3 +17,5 @@ export const DaysArray = [
   "Friday",
   "Saturday",
 ];
+
+export const DaysArrayShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];

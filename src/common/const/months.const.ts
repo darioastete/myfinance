@@ -1,18 +1,3 @@
-export const Months = {
-  1: "January",
-  2: "February",
-  3: "March",
-  4: "April",
-  5: "May",
-  6: "June",
-  7: "July",
-  8: "August",
-  9: "September",
-  10: "October",
-  11: "November",
-  12: "December",
-};
-
 export const MonthsArray = [
   "January",
   "February",
@@ -41,4 +26,37 @@ export const MonthsArrayShort = [
   "Oct",
   "Nov",
   "Dec",
+];
+
+const START_YEAR = 2020;
+const NUM_YEARS = 10;
+export const YearsArray = Array.from({ length: NUM_YEARS }, (_, i) => {
+  const year = START_YEAR + i;
+  return { label: year.toString(), value: year };
+});
+
+export const Months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+].map((month, index) => ({
+  label: month,
+  value: index,
+}));
+
+export const WeeksForMonth = [
+  { label: "1st week", value: 0 },
+  { label: "2nd week", value: 1 },
+  { label: "3rd week", value: 2 },
+  { label: "4th week", value: 3 },
+  { label: "5th week", value: 4 },
 ];

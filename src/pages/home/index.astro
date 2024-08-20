@@ -11,24 +11,26 @@ import Chart from "@components/Chart.vue";
         <button id="btnOpenModal" onclick="{`window.${id}.showModal()`}" >Abrir modal</button>
         <Modal open={false} client:visible id="modalA" />
     </div> -->
-    <div class="flex justify-center">
-        <h3 class="text-2xl font-semibold">Balance</h3>
-    </div>
-    <div class="flex overflow-hidden items-center justify-center">
-        <div class="w-full">
-            <Chart  client:visible />
+    <main>
+        <div class="flex justify-center">
+            <h3 class="text-2xl font-semibold">Balance</h3>
         </div>
-        <!-- <div class="w-full">
-            <canvas id="forWeek" class="w-full" />
-            <CardChart />
+        <div class="flex overflow-hidden items-center justify-center">
+            <div class="w-full">
+                <Chart  client:visible />
+            </div>
+            <!-- <div class="w-full">
+                <canvas id="forWeek" class="w-full" />
+                <CardChart />
+            </div>
+            <div class="w-full">
+                <canvas id="forMonth" class="w-full" />
+            </div>
+            <div class="w-full">
+                <canvas id="forYear" class="w-full" />
+            </div> -->
         </div>
-        <div class="w-full">
-            <canvas id="forMonth" class="w-full" />
-        </div>
-        <div class="w-full">
-            <canvas id="forYear" class="w-full" />
-        </div> -->
-    </div>
+    </main>
 </Layout>
 
 <!-- <script>

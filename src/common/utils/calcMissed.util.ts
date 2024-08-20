@@ -17,8 +17,8 @@ export const calcMissedDay = async (): Promise<number> => {
 
     const findGoal = goals.find(
       (goal) =>
-        momentTZ(moment.unix(Number(goal.start_date)), "Australia/Sydney")
-          .tz("Australia/Brisbane")
+        momentTZ
+          .tz(moment.unix(Number(goal.start_date)), "Australia/Sydney")
           .format("MM") === getCurrentMonth
     );
 
